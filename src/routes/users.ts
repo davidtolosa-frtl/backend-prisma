@@ -28,14 +28,16 @@ router.get("/:id", async (req, res) => {
 
 // POST /users - crear un usuario
 router.post("/", async (req, res) => {
-  const { name, email, birthDate, gender } = req.body;
+  const { name, email, birthDate, gender, favouriteFood } = req.body;
 
   if (!name || !email) {
     return res.status(400).json({ error: "name y email son requeridos" });
   }
 
   if (gender && !VALID_GENDERS.includes(gender)) {
-    return res.status(400).json({ error: `gender debe ser uno de: ${VALID_GENDERS.join(", ")}` });
+    return res
+      .status(400)
+      .json({ error: `gender debe ser uno de: ${VALID_GENDERS.join(", ")}` });
   }
 
   try {
@@ -45,21 +47,26 @@ router.post("/", async (req, res) => {
         email,
         birthDate: birthDate ? new Date(birthDate) : undefined,
         gender,
+        favouriteFood,
       },
     });
     res.status(201).json(user);
   } catch (error) {
-    res.status(400).json({ error: "No se pudo crear el usuario (email duplicado?)" });
+    res
+      .status(400)
+      .json({ error: "No se pudo crear el usuario (email duplicado?)" });
   }
 });
 
 // PUT /users/:id - actualizar un usuario
 router.put("/:id", async (req, res) => {
   const id = Number(req.params.id);
-  const { name, email, birthDate, gender } = req.body;
+  const { name, email, birthDate, gender, favouriteFood } = req.body;
 
   if (gender && !VALID_GENDERS.includes(gender)) {
-    return res.status(400).json({ error: `gender debe ser uno de: ${VALID_GENDERS.join(", ")}` });
+    return res
+      .status(400)
+      .json({ error: `gender debe ser uno de: ${VALID_GENDERS.join(", ")}` });
   }
 
   try {
@@ -70,6 +77,7 @@ router.put("/:id", async (req, res) => {
         email,
         birthDate: birthDate ? new Date(birthDate) : undefined,
         gender,
+        favouriteFood,
       },
     });
     res.json(user);

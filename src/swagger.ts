@@ -17,7 +17,8 @@ export const swaggerDocument = {
   info: {
     title: "Prisma Express API",
     version: "1.0.0",
-    description: "API de ejemplo con Express, TypeScript y Prisma (Usuarios y Posts)",
+    description:
+      "API de ejemplo con Express, TypeScript y Prisma (Usuarios y Posts)",
   },
   servers: [{ url: "/" }],
   tags: [{ name: "Users" }, { name: "Posts" }],
@@ -31,7 +32,10 @@ export const swaggerDocument = {
             description: "Lista de usuarios",
             content: {
               "application/json": {
-                schema: { type: "array", items: { $ref: "#/components/schemas/UserWithPosts" } },
+                schema: {
+                  type: "array",
+                  items: { $ref: "#/components/schemas/UserWithPosts" },
+                },
               },
             },
           },
@@ -43,13 +47,19 @@ export const swaggerDocument = {
         requestBody: {
           required: true,
           content: {
-            "application/json": { schema: { $ref: "#/components/schemas/UserCreate" } },
+            "application/json": {
+              schema: { $ref: "#/components/schemas/UserCreate" },
+            },
           },
         },
         responses: {
           201: {
             description: "Usuario creado",
-            content: { "application/json": { schema: { $ref: "#/components/schemas/User" } } },
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/User" },
+              },
+            },
           },
           400: errorResponse("Datos inválidos o email duplicado"),
         },
@@ -64,7 +74,9 @@ export const swaggerDocument = {
           200: {
             description: "Usuario encontrado",
             content: {
-              "application/json": { schema: { $ref: "#/components/schemas/UserWithPosts" } },
+              "application/json": {
+                schema: { $ref: "#/components/schemas/UserWithPosts" },
+              },
             },
           },
           404: errorResponse("Usuario no encontrado"),
@@ -76,13 +88,19 @@ export const swaggerDocument = {
         requestBody: {
           required: true,
           content: {
-            "application/json": { schema: { $ref: "#/components/schemas/UserUpdate" } },
+            "application/json": {
+              schema: { $ref: "#/components/schemas/UserUpdate" },
+            },
           },
         },
         responses: {
           200: {
             description: "Usuario actualizado",
-            content: { "application/json": { schema: { $ref: "#/components/schemas/User" } } },
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/User" },
+              },
+            },
           },
           400: errorResponse("gender inválido"),
           404: errorResponse("Usuario no encontrado"),
@@ -106,7 +124,10 @@ export const swaggerDocument = {
             description: "Lista de posts",
             content: {
               "application/json": {
-                schema: { type: "array", items: { $ref: "#/components/schemas/PostWithAuthor" } },
+                schema: {
+                  type: "array",
+                  items: { $ref: "#/components/schemas/PostWithAuthor" },
+                },
               },
             },
           },
@@ -118,13 +139,19 @@ export const swaggerDocument = {
         requestBody: {
           required: true,
           content: {
-            "application/json": { schema: { $ref: "#/components/schemas/PostCreate" } },
+            "application/json": {
+              schema: { $ref: "#/components/schemas/PostCreate" },
+            },
           },
         },
         responses: {
           201: {
             description: "Post creado",
-            content: { "application/json": { schema: { $ref: "#/components/schemas/Post" } } },
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/Post" },
+              },
+            },
           },
           400: errorResponse("Datos inválidos o authorId inexistente"),
         },
@@ -139,7 +166,9 @@ export const swaggerDocument = {
           200: {
             description: "Post encontrado",
             content: {
-              "application/json": { schema: { $ref: "#/components/schemas/PostWithAuthor" } },
+              "application/json": {
+                schema: { $ref: "#/components/schemas/PostWithAuthor" },
+              },
             },
           },
           404: errorResponse("Post no encontrado"),
@@ -151,13 +180,19 @@ export const swaggerDocument = {
         requestBody: {
           required: true,
           content: {
-            "application/json": { schema: { $ref: "#/components/schemas/PostUpdate" } },
+            "application/json": {
+              schema: { $ref: "#/components/schemas/PostUpdate" },
+            },
           },
         },
         responses: {
           200: {
             description: "Post actualizado",
-            content: { "application/json": { schema: { $ref: "#/components/schemas/Post" } } },
+            content: {
+              "application/json": {
+                schema: { $ref: "#/components/schemas/Post" },
+              },
+            },
           },
           404: errorResponse("Post no encontrado"),
         },
@@ -187,9 +222,14 @@ export const swaggerDocument = {
         properties: {
           id: { type: "integer", example: 1 },
           name: { type: "string", example: "Ana" },
-          email: { type: "string", format: "email", example: "ana@example.com" },
+          email: {
+            type: "string",
+            format: "email",
+            example: "ana@example.com",
+          },
           birthDate: { type: "string", format: "date-time", nullable: true },
           gender: { $ref: "#/components/schemas/Gender" },
+          favouriteFood: { type: "string", example: "Milanesa" },
           createdAt: { type: "string", format: "date-time" },
         },
       },
@@ -199,7 +239,10 @@ export const swaggerDocument = {
           {
             type: "object",
             properties: {
-              posts: { type: "array", items: { $ref: "#/components/schemas/Post" } },
+              posts: {
+                type: "array",
+                items: { $ref: "#/components/schemas/Post" },
+              },
             },
           },
         ],
@@ -209,9 +252,14 @@ export const swaggerDocument = {
         required: ["name", "email"],
         properties: {
           name: { type: "string", example: "Ana" },
-          email: { type: "string", format: "email", example: "ana@example.com" },
+          email: {
+            type: "string",
+            format: "email",
+            example: "ana@example.com",
+          },
           birthDate: { type: "string", format: "date", example: "1990-05-20" },
           gender: { $ref: "#/components/schemas/Gender" },
+          favouriteFood: { type: "string", example: "Pizza" },
         },
       },
       UserUpdate: {
@@ -221,6 +269,7 @@ export const swaggerDocument = {
           email: { type: "string", format: "email" },
           birthDate: { type: "string", format: "date" },
           gender: { $ref: "#/components/schemas/Gender" },
+          favouriteFood: { type: "string", example: "Pizza" },
         },
       },
       Post: {
