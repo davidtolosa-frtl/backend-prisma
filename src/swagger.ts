@@ -190,6 +190,7 @@ export const swaggerDocument = {
           email: { type: "string", format: "email", example: "ana@example.com" },
           birthDate: { type: "string", format: "date-time", nullable: true },
           gender: { $ref: "#/components/schemas/Gender" },
+          phone: { type: "string", example: "+54 11 1234-5678", nullable: true },
           createdAt: { type: "string", format: "date-time" },
         },
       },
@@ -212,6 +213,7 @@ export const swaggerDocument = {
           email: { type: "string", format: "email", example: "ana@example.com" },
           birthDate: { type: "string", format: "date", example: "1990-05-20" },
           gender: { $ref: "#/components/schemas/Gender" },
+          phone: { type: "string", example: "+54 11 1234-5678" },
         },
       },
       UserUpdate: {
@@ -221,6 +223,7 @@ export const swaggerDocument = {
           email: { type: "string", format: "email" },
           birthDate: { type: "string", format: "date" },
           gender: { $ref: "#/components/schemas/Gender" },
+          phone: { type: "string", example: "+54 11 1234-5678" },
         },
       },
       Post: {

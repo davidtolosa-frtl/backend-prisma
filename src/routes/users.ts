@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
 
 // POST /users - crear un usuario
 router.post("/", async (req, res) => {
-  const { name, email, birthDate, gender } = req.body;
+  const { name, email, birthDate, gender, phone } = req.body;
 
   if (!name || !email) {
     return res.status(400).json({ error: "name y email son requeridos" });
@@ -45,6 +45,7 @@ router.post("/", async (req, res) => {
         email,
         birthDate: birthDate ? new Date(birthDate) : undefined,
         gender,
+        phone,
       },
     });
     res.status(201).json(user);
@@ -56,7 +57,7 @@ router.post("/", async (req, res) => {
 // PUT /users/:id - actualizar un usuario
 router.put("/:id", async (req, res) => {
   const id = Number(req.params.id);
-  const { name, email, birthDate, gender } = req.body;
+  const { name, email, birthDate, gender, phone } = req.body;
 
   if (gender && !VALID_GENDERS.includes(gender)) {
     return res.status(400).json({ error: `gender debe ser uno de: ${VALID_GENDERS.join(", ")}` });
@@ -70,6 +71,7 @@ router.put("/:id", async (req, res) => {
         email,
         birthDate: birthDate ? new Date(birthDate) : undefined,
         gender,
+        phone,
       },
     });
     res.json(user);
