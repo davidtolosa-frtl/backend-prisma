@@ -99,6 +99,7 @@ npm run dev
 | `email` | String | Requerido, único |
 | `birthDate` | DateTime? | Opcional |
 | `gender` | String? | Opcional: `MALE`, `FEMALE` u `OTHER` |
+| `phone` | String? | Opcional |
 | `createdAt` | DateTime | Fecha de creación |
 | `posts` | Post[] | Relación uno a muchos |
 
@@ -142,7 +143,7 @@ Crear un usuario:
 ```bash
 curl -X POST http://localhost:3000/users \
   -H "Content-Type: application/json" \
-  -d '{"name": "Ana", "email": "ana@example.com", "birthDate": "1990-05-20", "gender": "FEMALE"}'
+  -d '{"name": "Ana", "email": "ana@example.com", "birthDate": "1990-05-20", "gender": "FEMALE", "phone": "+54 11 1234-5678"}'
 ```
 
 Crear un post:
