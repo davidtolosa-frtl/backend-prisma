@@ -8,13 +8,14 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   name      String
-  email     String   @unique
+  email     String    @unique
   birthDate DateTime?
   gender    String?
+  phone     String?
   posts     Post[]
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
 
   @@map("users")
 }
