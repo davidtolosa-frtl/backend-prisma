@@ -15,7 +15,8 @@ model User {
   gender    String?
   phone     String?
   posts     Post[]
-  createdAt DateTime  @default(now())
+  createdAt DateTime @default(now())
+  favouriteFood String?
 
   @@map("users")
 }
